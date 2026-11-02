@@ -12,6 +12,8 @@ img,video{display:block;max-width:100%;height:auto}
 a{color:inherit}
 a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--orange);outline-offset:3px;border-radius:8px}
 h1,h2,h3{line-height:1.12;letter-spacing:-.025em;margin:0}
+/* headings the brand orange: Drive, Ride, Features (title + 10 points), Safety */
+#drivers h2,#riders h2,#features h2,#features .rv h3,#safety h2{color:var(--orange)}
 h2{font-size:clamp(1.85rem,4.6vw,2.75rem);font-weight:800;margin-bottom:28px}
 p{margin:0 0 16px}
 .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
