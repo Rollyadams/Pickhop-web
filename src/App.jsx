@@ -127,7 +127,7 @@ function Riders() {
   return (
     <section id="riders">
       <div className="wrap split">
-        <img className="rider-img" src="/rider.jpg" width="320" height="320" alt="A Lagos bridge on a Pickhop ride" loading="lazy" />
+        <img className="rider-img" src="/rider.jpg" width="320" height="320" alt="Two Pickhop riders smiling as they look at a phone in the back seat of a car" loading="lazy" />
         <div>
           <h2>{RIDERS.title}</h2>
           <p className="intro">{RIDERS.intro}</p>
@@ -159,11 +159,42 @@ function Safety() {
   )
 }
 
+function AboutVideo() {
+  const ref = useRef(null)
+  // Plays only while on screen (saves data); reduced-motion users get the still poster.
+  useEffect(() => {
+    const v = ref.current
+    if (!v || matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    const io = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) v.play().catch(() => {})
+      else v.pause()
+    }, { threshold: 0.25 })
+    io.observe(v)
+    return () => io.disconnect()
+  }, [])
+  return (
+    <video
+      ref={ref}
+      className="about-media"
+      muted
+      loop
+      playsInline
+      preload="metadata"
+      poster="/about.jpg"
+      width="960"
+      height="636"
+      aria-label="Pickhop logo animation"
+    >
+      <source src="/about.mp4" type="video/mp4" />
+    </video>
+  )
+}
+
 function About() {
   return (
     <section id="about" className="grey">
       <div className="wrap split">
-        <img className="about-img" src="/about.jpg" width="760" height="432" alt="Driving across a Lagos bridge" loading="lazy" />
+        <AboutVideo />
         <div>
           <h2>{ABOUT.title}</h2>
           {ABOUT.paragraphs.map((p) => <p key={p}>{p}</p>)}
