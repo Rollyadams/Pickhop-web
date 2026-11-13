@@ -284,7 +284,7 @@ function Footer() {
         </div>
       </div>
       <div className="wrap">
-        <p className="legal">© {new Date().getFullYear()} Rollyadams Techworld Limited. All rights reserved.</p>
+        <p className="legal">© {new Date().getFullYear()} Rollyadams Techworld Limited. All rights reserved. <a href="/privacy.html">Privacy Policy</a> · <a href="/terms.html">Terms of Service</a></p>
       </div>
     </footer>
   )
